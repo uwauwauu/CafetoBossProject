@@ -1,25 +1,48 @@
-# This workflow will build a Java project with Ant
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-ant
-
-name: Java CI Workflow
+name: Java CI/CD Pipeline
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
-
+  # --- TRABAJO 1: COMPILAR (CI) ---
+  build-job:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 22
-      uses: actions/setup-java@v4
-      with:
-        java-version: '22'
-        distribution: 'temurin'
-    - name: Build with Ant
-      run: ant -noinput -buildfile build.xml
+      - uses: actions/checkout@v4
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+      
+      - name: Build with Ant
+        run: ant -noinput -buildfile build.xml
+
+      # Paso OBLIGATORIO: Guardar el archivo temporalmente para pasarlo al siguiente trabajo
+      - name: Save JAR for next job
+        uses: actions/upload-artifact@v4
+        with:
+          name: temp-artifact
+          path: dist/*.jar
+          retention-days: 1
+
+  # --- TRABAJO 2: DESPLEGAR (CD) ---
+  deploy-job:
+    needs: build-job  # ¡Esto es clave! Espera a que termine el anterior
+    runs-on: ubuntu-latest
+    steps:
+      # Descargamos el archivo que guardó el trabajo anterior
+      - name: Download JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: temp-artifact
+          path: deploy-folder
+
+      # AQUÍ TU LÓGICA DE CD (Ejemplo: Subirlo como "Release" oficial de GitHub)
+      # Por ahora, simulamos que este es el artefacto final para el usuario
+      - name: Publish Final Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CafetoBoss-Instalador-Final
+          path: deploy-folder/*.jar
