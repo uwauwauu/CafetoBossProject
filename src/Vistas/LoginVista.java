@@ -4,17 +4,18 @@
  */
 package Vistas;
 
+import Controlador.LoginControlador;
+import Modelo.UsuarioDAO;
+
 /**
  *
  * @author Natalia
  */
 public class LoginVista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginVista
-     */
     public LoginVista() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**
@@ -27,40 +28,53 @@ public class LoginVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Usertxt = new javax.swing.JTextField();
-        Passwordtxt = new javax.swing.JTextField();
-        BLogIn = new javax.swing.JButton();
+        txtUsuario = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(132, 102, 81));
 
-        Usertxt.setBackground(new java.awt.Color(197, 164, 133));
-        Usertxt.setFont(new java.awt.Font("Sans Serif Collection", 0, 14)); // NOI18N
-        Usertxt.setForeground(jPanel1.getBackground());
-        Usertxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Usertxt.setText("Usuario");
-        Usertxt.setToolTipText("");
-        Usertxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUsuario.setBackground(new java.awt.Color(197, 164, 133));
+        txtUsuario.setFont(new java.awt.Font("Sans Serif Collection", 0, 14)); // NOI18N
+        txtUsuario.setForeground(jPanel1.getBackground());
+        txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtUsuario.setText("Usuario");
+        txtUsuario.setToolTipText("");
+        txtUsuario.setCaretColor(new java.awt.Color(132, 102, 81));
+        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
 
-        Passwordtxt.setBackground(new java.awt.Color(197, 164, 133));
-        Passwordtxt.setFont(new java.awt.Font("Sans Serif Collection", 0, 14)); // NOI18N
-        Passwordtxt.setForeground(jPanel1.getBackground());
-        Passwordtxt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        Passwordtxt.setText("Contraseña");
-        Passwordtxt.setToolTipText("");
-        Passwordtxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        BLogIn.setBackground(new java.awt.Color(97, 67, 27));
-        BLogIn.setFont(new java.awt.Font("Sans Serif Collection", 1, 12)); // NOI18N
-        BLogIn.setForeground(Usertxt.getBackground());
-        BLogIn.setText("Iniciar Sesión");
+        btnIngresar.setBackground(new java.awt.Color(97, 67, 27));
+        btnIngresar.setFont(new java.awt.Font("Sans Serif Collection", 1, 12)); // NOI18N
+        btnIngresar.setForeground(txtUsuario.getBackground());
+        btnIngresar.setText("Iniciar Sesión");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CoffeeCup (1).png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(2043, 2831));
         jLabel1.setMinimumSize(new java.awt.Dimension(2043, 2831));
+
+        txtPass.setBackground(new java.awt.Color(197, 164, 133));
+        txtPass.setForeground(jPanel1.getBackground());
+        txtPass.setCaretColor(new java.awt.Color(132, 102, 81));
+        txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPassFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPassFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,16 +83,16 @@ public class LoginVista extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Usertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(BLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                            .addComponent(txtPass))))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -87,11 +101,11 @@ public class LoginVista extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(Usertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(BLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -109,46 +123,45 @@ public class LoginVista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        if(txtUsuario.getText().equals("Usuario")){
+            txtUsuario.setText("");
+        }
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        if(txtUsuario.getText().equals("")){
+            txtUsuario.setText("Usuario");
+        }
+    }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
+        if(txtUsuario.getText().equals("Password")){
+            txtUsuario.setText("");
+        }
+    }//GEN-LAST:event_txtPassFocusGained
+
+    private void txtPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusLost
+        if(txtUsuario.getText().equals("")){
+            txtUsuario.setText("Password");
+        }
+    }//GEN-LAST:event_txtPassFocusLost
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginVista().setVisible(true);
-            }
-        });
+        UsuarioDAO modelo = new UsuarioDAO();
+        LoginVista vista = new LoginVista();
+        LoginControlador ctrl = new LoginControlador(modelo, vista);
+        ctrl.iniciar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BLogIn;
-    private javax.swing.JTextField Passwordtxt;
-    private javax.swing.JTextField Usertxt;
+    public javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    public javax.swing.JPasswordField txtPass;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
