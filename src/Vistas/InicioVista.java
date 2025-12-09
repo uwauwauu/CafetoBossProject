@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Controlador.ListaPedidosControlador;
 import Controlador.PedidoControlador;
 
 /**
@@ -36,7 +37,8 @@ public class InicioVista extends javax.swing.JFrame {
         BRegPedido = new javax.swing.JButton();
         BListPedidos = new javax.swing.JButton();
         BInventario = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblSalir = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(132, 102, 81));
@@ -78,13 +80,21 @@ public class InicioVista extends javax.swing.JFrame {
         BListPedidos.setBackground(new java.awt.Color(173, 135, 109));
         BListPedidos.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         BListPedidos.setText("Historial de Pedidos");
+        BListPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BListPedidosActionPerformed(evt);
+            }
+        });
 
         BInventario.setBackground(new java.awt.Color(173, 135, 109));
         BInventario.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         BInventario.setText("Inventario");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4115235-exit-logout-sign-out_114030.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4115235-exit-logout-sign-out_114030.png"))); // NOI18N
+        lblSalir.setText("jLabel1");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel3.setText("Cerrar Sesión");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -101,7 +111,9 @@ public class InicioVista extends javax.swing.JFrame {
                             .addComponent(BInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(118, 118, 118))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -115,7 +127,9 @@ public class InicioVista extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(BInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSalir)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18))
         );
 
@@ -146,13 +160,19 @@ public class InicioVista extends javax.swing.JFrame {
 
     private void BRegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegPedidoActionPerformed
         PedidoVista vistaPedidos = new PedidoVista();
-
         // Conectar el controlador
         PedidoControlador ctrlPedidos = new PedidoControlador(vistaPedidos);
-
         // Mostrar la ventana
         vistaPedidos.setVisible(true);
     }//GEN-LAST:event_BRegPedidoActionPerformed
+
+    private void BListPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BListPedidosActionPerformed
+        ListaPedidosVista listavistaPedidos = new ListaPedidosVista();
+        // Conectar el controlador
+        ListaPedidosControlador ctrlListaPedidos = new ListaPedidosControlador(listavistaPedidos);
+        // Mostrar la ventana
+        listavistaPedidos.setVisible(true);
+    }//GEN-LAST:event_BListPedidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,10 +213,11 @@ public class InicioVista extends javax.swing.JFrame {
     private javax.swing.JButton BInventario;
     private javax.swing.JButton BListPedidos;
     private javax.swing.JButton BRegPedido;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblSalir;
     // End of variables declaration//GEN-END:variables
 }
