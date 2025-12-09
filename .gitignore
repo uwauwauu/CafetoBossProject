@@ -28,3 +28,4 @@ src/properties/db.properties
 
 # Por seguridad, ignora cualquier db.properties en cualquier lado
 **/db.properties
+/build/
