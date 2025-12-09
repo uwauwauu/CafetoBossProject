@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.sql.Statement;
+import java.util.ArrayList;
 /**
  *
  * @author Natalia
@@ -18,13 +19,12 @@ import java.sql.Statement;
 public class PedidoDAO {
     Connection con;
     ConnectionDB acceso = ConnectionDB.getInstance();
+    PreparedStatement ps;
+    ResultSet rs;
 
     public boolean registrarPedido(Pedido pedido, List<DetallePedido> listaDetalles) {
         String sqlPedido = "INSERT INTO pedidos (total, fecha) VALUES (?, NOW())";
         String sqlDetalle = "INSERT INTO detalles_pedido (id_pedido, id_producto, cantidad, precio_unitario, subtotal) VALUES (?, ?, ?, ?, ?)";
-
-        PreparedStatement ps;
-        ResultSet rs;
 
         try {
             con = acceso.getConnection();
@@ -65,5 +65,29 @@ public class PedidoDAO {
             System.out.println("Error: " + e.toString());
             return false;
         }
+    }
+    public List<Pedido> listarPedidosPorFecha(String fecha) {
+        List<Pedido> lista = new ArrayList<>();
+        // Usamos DATE(fecha) para ignorar la hora y comparar solo el día
+        String sql = "SELECT * FROM pedidos WHERE DATE(fecha) = ?";
+
+        try {
+            con = acceso.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, fecha); // Formato esperado: 'YYYY-MM-DD'
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Pedido ped = new Pedido();
+                ped.setId(rs.getInt("id_pedido"));
+                ped.setTotal(rs.getDouble("total"));
+                ped.setFecha(rs.getString("fecha"));
+                ped.setEstado(rs.getString("estado"));
+                lista.add(ped);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al filtrar por fecha: " + e.toString());
+        }
+        return lista;
     }
 }
