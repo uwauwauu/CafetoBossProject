@@ -44,7 +44,7 @@ public class InventarioVista extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         InvCodetxt = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(197, 164, 133));
 
