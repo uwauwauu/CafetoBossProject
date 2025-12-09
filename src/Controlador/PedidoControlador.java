@@ -32,6 +32,8 @@ public class PedidoControlador implements ActionListener {
         // --- LISTENERS ---
         this.vista.btnAgregar.addActionListener(this);
         this.vista.btnGuardar.addActionListener(this);
+        this.vista.btnBorrar.addActionListener(this);
+        this.vista.btnActualizar.addActionListener(this);
 
         // Listener especial para cuando cambias la Categoría
         this.vista.cbxCategoria.addActionListener(new ActionListener() {
@@ -48,53 +50,16 @@ public class PedidoControlador implements ActionListener {
                 mostrarPrecioProducto();
             }
         });
-
+        this.vista.tablaPedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                llenarCamposDesdeTabla();
+            }
+        });
         cargarCategorias(); // Cargar categorías al abrir la ventana
     }
 
-    // Llenar el combo de Categorías
-    private void cargarCategorias() {
-        vista.cbxCategoria.removeAllItems();
-        List<Categoria> lista = catDao.listarCategorias();
-        for (Categoria cat : lista) {
-            vista.cbxCategoria.addItem(cat);
-        }
-    }
 
-    // Filtrar productos (Se llama al cambiar categoría)
-    private void cargarProductosPorCategoria() {
-        Categoria catSeleccionada = (Categoria) vista.cbxCategoria.getSelectedItem();
-        vista.cbxProductos.removeAllItems();
-
-        if (catSeleccionada != null) {
-            // Usamos el método con filtro que creamos en ProductoDAO
-            List<Producto> lista = prodDao.listarProductosPorCategoria(catSeleccionada.getId());
-            for (Producto prod : lista) {
-                vista.cbxProductos.addItem(prod);
-            }
-        }
-    }
-
-    // Mostrar precio unitario en el label/textfield
-    private void mostrarPrecioProducto() {
-        Producto prod = (Producto) vista.cbxProductos.getSelectedItem();
-        if (prod != null) {
-            // Asumiendo que tu campo de precio unitario se llama txtPrecio o lblPrecio
-            vista.txtPrecioUnitario.setText(String.valueOf(prod.getPrecio()));
-        }
-    }
-
-    // Calcular el total sumando la columna de la tabla
-    private void calcularTotalGeneral() {
-        double total = 0.00;
-        int columnaSubtotal = 4; // La columna "Subtotal" es la 4 (0,1,2,3,4)
-
-        for (int i = 0; i < vista.tablaPedidos.getRowCount(); i++) {
-            total += Double.parseDouble(modeloTabla.getValueAt(i, columnaSubtotal).toString());
-        }
-
-        vista.txtTotal.setText(String.valueOf(total));
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -146,7 +111,104 @@ public class PedidoControlador implements ActionListener {
                 modeloTabla.setRowCount(0); // Limpiar tabla
             }
         }
+        
+        // --- BOTÓN BORRAR ---
+        if (e.getSource() == vista.btnBorrar) {
+            int fila = vista.tablaPedidos.getSelectedRow();
+
+            if (fila >= 0) {
+                // Simplemente eliminamos la fila del modelo
+                modeloTabla.removeRow(fila);
+                // Recalcular el total después de borrar
+                calcularTotalGeneral();
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una fila para borrar");
+            }
+        }
+
+        // --- BOTÓN ACTUALIZAR ---
+        if (e.getSource() == vista.btnActualizar) {
+            int fila = vista.tablaPedidos.getSelectedRow();
+
+            if (fila >= 0) {
+                // Obtener la nueva cantidad del spinner
+                int nuevaCantidad = Integer.parseInt(vista.spinnerCantidad.getValue().toString());
+
+                if (nuevaCantidad > 0) {
+                    // Obtener el precio unitario que ya estaba en la tabla (Columna 3)
+                    double precioUnitario = Double.parseDouble(modeloTabla.getValueAt(fila, 3).toString());
+
+                    // Calcular nuevo subtotal
+                    double nuevoSubtotal = precioUnitario * nuevaCantidad;
+
+                    // Actualizar los valores en la tabla
+                    modeloTabla.setValueAt(nuevaCantidad, fila, 2); // Columna Cantidad
+                    modeloTabla.setValueAt(nuevoSubtotal, fila, 4); // Columna Subtotal
+
+                    // Recalcular el total final
+                    calcularTotalGeneral();
+
+                    JOptionPane.showMessageDialog(null, "Producto actualizado");
+                } else {
+                    JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor a 0");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione un producto de la tabla para modificar");
+            }
+        }
     }
 
-    // ... Métodos auxiliares para calcularTotalGeneral y cargarProductos ...
+        // Llenar el combo de Categorías
+    private void cargarCategorias() {
+        vista.cbxCategoria.removeAllItems();
+        List<Categoria> lista = catDao.listarCategorias();
+        for (Categoria cat : lista) {
+            vista.cbxCategoria.addItem(cat);
+        }
+    }
+
+    // Filtrar productos (Se llama al cambiar categoría)
+    private void cargarProductosPorCategoria() {
+        Categoria catSeleccionada = (Categoria) vista.cbxCategoria.getSelectedItem();
+        vista.cbxProductos.removeAllItems();
+
+        if (catSeleccionada != null) {
+            // Usamos el método con filtro que creamos en ProductoDAO
+            List<Producto> lista = prodDao.listarProductosPorCategoria(catSeleccionada.getId());
+            for (Producto prod : lista) {
+                vista.cbxProductos.addItem(prod);
+            }
+        }
+    }
+
+    // Mostrar precio unitario en el textfield
+    private void mostrarPrecioProducto() {
+        Producto prod = (Producto) vista.cbxProductos.getSelectedItem();
+        if (prod != null) {
+            // Asumiendo que tu campo de precio unitario se llama txtPrecio o lblPrecio
+            vista.txtPrecioUnitario.setText(String.valueOf(prod.getPrecio()));
+        }
+    }
+    
+    // Llenar campos de las tablas
+    private void llenarCamposDesdeTabla(){
+        int fila = vista.tablaPedidos.getSelectedRow();
+        if (fila >= 0) {
+            // Obtenemos la cantidad de la columna 2 (0=ID, 1=Nombre, 2=Cantidad...)
+            int cantidad = Integer.parseInt(modeloTabla.getValueAt(fila, 2).toString());
+            vista.spinnerCantidad.setValue(cantidad);
+        }
+    }
+
+    // Calcular el total sumando la columna de la tabla
+    private void calcularTotalGeneral() {
+        double total = 0.00;
+        int columnaSubtotal = 4; // La columna "Subtotal" es la 4 (0,1,2,3,4)
+
+        for (int i = 0; i < vista.tablaPedidos.getRowCount(); i++) {
+            total += Double.parseDouble(modeloTabla.getValueAt(i, columnaSubtotal).toString());
+        }
+
+        vista.txtTotal.setText(String.valueOf(total));
+    }
 }

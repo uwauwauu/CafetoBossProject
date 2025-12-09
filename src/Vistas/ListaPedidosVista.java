@@ -15,6 +15,7 @@ public class ListaPedidosVista extends javax.swing.JFrame {
      */
     public ListaPedidosVista() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**

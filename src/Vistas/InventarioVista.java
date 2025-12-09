@@ -15,6 +15,7 @@ public class InventarioVista extends javax.swing.JFrame {
      */
     public InventarioVista() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**
