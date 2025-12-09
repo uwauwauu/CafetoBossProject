@@ -15,6 +15,7 @@ public class InicioAdminVista extends javax.swing.JFrame {
      */
     public InicioAdminVista() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

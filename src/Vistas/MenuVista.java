@@ -15,6 +15,7 @@ public class MenuVista extends javax.swing.JFrame {
      */
     public MenuVista() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

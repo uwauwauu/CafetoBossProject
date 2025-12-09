@@ -17,6 +17,7 @@ public class InicioVista extends javax.swing.JFrame {
      */
     public InicioVista() {
         initComponents();
+        this.setLocationRelativeTo(null); 
     }
 
     /**
@@ -146,10 +147,10 @@ public class InicioVista extends javax.swing.JFrame {
     private void BRegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegPedidoActionPerformed
         PedidoVista vistaPedidos = new PedidoVista();
 
-        // 2. Conectar el controlador
+        // Conectar el controlador
         PedidoControlador ctrlPedidos = new PedidoControlador(vistaPedidos);
 
-        // 3. Mostrar la ventana
+        // Mostrar la ventana
         vistaPedidos.setVisible(true);
     }//GEN-LAST:event_BRegPedidoActionPerformed
 

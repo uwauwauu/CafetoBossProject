@@ -28,7 +28,7 @@ public class PedidoDAO {
 
         try {
             con = acceso.getConnection();
-            con.setAutoCommit(false); // ¡IMPORTANTE! Iniciamos transacción manual
+            con.setAutoCommit(false); //Iniciamos transacción manual
 
             // Insertar la cabecera (El Pedido)
             ps = con.prepareStatement(sqlPedido, Statement.RETURN_GENERATED_KEYS);
