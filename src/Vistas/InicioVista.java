@@ -89,6 +89,11 @@ public class InicioVista extends javax.swing.JFrame {
         BInventario.setBackground(new java.awt.Color(173, 135, 109));
         BInventario.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         BInventario.setText("Inventario");
+        BInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BInventarioActionPerformed(evt);
+            }
+        });
 
         lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4115235-exit-logout-sign-out_114030.png"))); // NOI18N
         lblSalir.setText("jLabel1");
@@ -159,20 +164,16 @@ public class InicioVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BRegPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegPedidoActionPerformed
-        PedidoVista vistaPedidos = new PedidoVista();
-        // Conectar el controlador
-        PedidoControlador ctrlPedidos = new PedidoControlador(vistaPedidos);
-        // Mostrar la ventana
-        vistaPedidos.setVisible(true);
+        
     }//GEN-LAST:event_BRegPedidoActionPerformed
 
     private void BListPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BListPedidosActionPerformed
-        ListaPedidosVista listavistaPedidos = new ListaPedidosVista();
-        // Conectar el controlador
-        ListaPedidosControlador ctrlListaPedidos = new ListaPedidosControlador(listavistaPedidos);
-        // Mostrar la ventana
-        listavistaPedidos.setVisible(true);
+        
     }//GEN-LAST:event_BListPedidosActionPerformed
+
+    private void BInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BInventarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BInventarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,14 +211,14 @@ public class InicioVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BInventario;
-    private javax.swing.JButton BListPedidos;
-    private javax.swing.JButton BRegPedido;
+    public javax.swing.JButton BInventario;
+    public javax.swing.JButton BListPedidos;
+    public javax.swing.JButton BRegPedido;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lblSalir;
+    public javax.swing.JLabel lblSalir;
     // End of variables declaration//GEN-END:variables
 }
