@@ -13,6 +13,7 @@ public class Producto {
     private String nombre;
     private double precio;
     private int stock;
+    private int id_categoria;
 
     public Producto() {
     }
@@ -47,6 +48,14 @@ public class Producto {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+    
+    public int getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     @Override

@@ -66,9 +66,9 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnCrear" min="-2" pref="87" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="BActualizar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="BEliminar" min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="btnEliminar" min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -88,9 +88,9 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="BActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnListar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="BEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -229,7 +229,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="BEliminar">
+        <Component class="javax.swing.JButton" name="btnEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
@@ -237,7 +237,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="BActualizar">
+        <Component class="javax.swing.JButton" name="btnActualizar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
