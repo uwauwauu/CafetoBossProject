@@ -34,8 +34,9 @@ public class InicioAdminVista extends javax.swing.JFrame {
         BRegPedido = new javax.swing.JButton();
         BListPedidos = new javax.swing.JButton();
         BInventario = new javax.swing.JButton();
-        BMenu = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        BEditarMenu = new javax.swing.JButton();
+        lblSalir = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(132, 102, 81));
@@ -76,12 +77,15 @@ public class InicioAdminVista extends javax.swing.JFrame {
         BInventario.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
         BInventario.setText("Inventario");
 
-        BMenu.setBackground(new java.awt.Color(173, 135, 109));
-        BMenu.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        BMenu.setText("Editar Menú");
+        BEditarMenu.setBackground(new java.awt.Color(173, 135, 109));
+        BEditarMenu.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
+        BEditarMenu.setText("Editar Menú");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4115235-exit-logout-sign-out_114030.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        lblSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/4115235-exit-logout-sign-out_114030.png"))); // NOI18N
+        lblSalir.setText("jLabel1");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel3.setText("Cerrar Sesión");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -96,10 +100,12 @@ public class InicioAdminVista extends javax.swing.JFrame {
                             .addComponent(BRegPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BListPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(BEditarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(118, 118, 118))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -113,9 +119,11 @@ public class InicioAdminVista extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(BInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(BMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BEditarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSalir)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18))
         );
 
@@ -181,14 +189,15 @@ public class InicioAdminVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BInventario;
-    private javax.swing.JButton BListPedidos;
-    private javax.swing.JButton BMenu;
-    private javax.swing.JButton BRegPedido;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JButton BEditarMenu;
+    public javax.swing.JButton BInventario;
+    public javax.swing.JButton BListPedidos;
+    public javax.swing.JButton BRegPedido;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public javax.swing.JLabel lblSalir;
     // End of variables declaration//GEN-END:variables
 }

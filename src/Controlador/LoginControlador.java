@@ -52,8 +52,8 @@ public class LoginControlador implements ActionListener{
                 // Lógica para abrir la ventana según el rol del usuario
                 if (us.getRol().equals("admin")) {
                     InicioAdminVista admin = new InicioAdminVista();
-                    
                     admin.setVisible(true);
+                    InicioControlador ctrlInicio = new InicioControlador(admin);
                 } else {
                     InicioVista empleado = new InicioVista();
                     empleado.setVisible(true);
