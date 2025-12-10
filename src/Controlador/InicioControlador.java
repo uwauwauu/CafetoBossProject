@@ -80,6 +80,8 @@ public class InicioControlador implements ActionListener {
         }
         if (e.getSource() == vista.BInventario) {
             InventarioVista invista = new InventarioVista();
+            // Conectar el controlador
+            InventarioControlador ctrlInv = new InventarioControlador(invista);
             // Mostrar la ventana
             invista.setVisible(true);
         }

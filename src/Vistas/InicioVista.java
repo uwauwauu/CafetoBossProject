@@ -4,13 +4,6 @@
  */
 package Vistas;
 
-import Controlador.ListaPedidosControlador;
-import Controlador.PedidoControlador;
-
-/**
- *
- * @author Natalia
- */
 public class InicioVista extends javax.swing.JFrame {
 
     /**
