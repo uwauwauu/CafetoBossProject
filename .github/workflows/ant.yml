@@ -29,7 +29,7 @@ jobs:
 
   # --- TRABAJO 2: DESPLEGAR (CD) ---
   deploy-job:
-    needs: build-job  # ¡Esto es clave! Espera a que termine el anterior
+    needs: build-job  # Espera a que termine el anterior
     runs-on: ubuntu-latest
     steps:
       # Descargamos el archivo que guardó el trabajo anterior
