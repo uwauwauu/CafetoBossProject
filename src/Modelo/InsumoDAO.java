@@ -63,5 +63,36 @@ public class InsumoDAO {
         }
         return lista;
     }
+    
+    public boolean modificar(Insumo in) {
+        String sql = "UPDATE insumos SET codigo=?, nombre=?, cantidad=? WHERE id=?";
+        try {
+            con = acceso.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, in.getCodigo());
+            ps.setString(2, in.getNombre());
+            ps.setInt(3, in.getCantidad());
+            ps.setInt(4, in.getId());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al modificar: " + e.toString());
+            return false;
+        }
+    }
 
+    // 4. ELIMINAR
+    public boolean eliminar(int id) {
+        String sql = "DELETE FROM insumos WHERE id=?";
+        try {
+            con = acceso.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar: " + e.toString());
+            return false;
+        }
+    }
 }

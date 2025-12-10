@@ -38,8 +38,8 @@ public class InventarioVista extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
-        BEliminar = new javax.swing.JButton();
-        BActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -74,9 +74,9 @@ public class InventarioVista extends javax.swing.JFrame {
 
         btnListar.setText("Buscar");
 
-        BEliminar.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
 
-        BActualizar.setText("Actualizar");
+        btnActualizar.setText("Actualizar");
 
         btnCrear.setText("Crear");
 
@@ -107,9 +107,9 @@ public class InventarioVista extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BActualizar)
+                        .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(BEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,9 +125,9 @@ public class InventarioVista extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(244, 244, 244)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(BActualizar)
+                                    .addComponent(btnActualizar)
                                     .addComponent(btnListar)
-                                    .addComponent(BEliminar)
+                                    .addComponent(btnEliminar)
                                     .addComponent(btnCrear)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -201,10 +201,10 @@ public class InventarioVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton BActualizar;
-    public javax.swing.JButton BEliminar;
     public javax.swing.JComboBox<String> CBOrden;
+    public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnCrear;
+    public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnListar;
     private javax.swing.JLabel jLabel1;
