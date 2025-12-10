@@ -39,8 +39,7 @@ jobs:
           name: temp-artifact
           path: deploy-folder
 
-      # AQUÍ TU LÓGICA DE CD (Ejemplo: Subirlo como "Release" oficial de GitHub)
-      # Por ahora, simulamos que este es el artefacto final para el usuario
+      # LÓGICA DE CD
       - name: Publish Final Artifact
         uses: actions/upload-artifact@v4
         with:
