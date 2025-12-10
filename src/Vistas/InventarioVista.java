@@ -29,26 +29,26 @@ public class InventarioVista extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaInsumos = new javax.swing.JTable();
-        InvNombretxt = new javax.swing.JTextField();
+        tablaInventario = new javax.swing.JTable();
+        txtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        InvCantxt = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
         CBOrden = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        BLimpiar = new javax.swing.JButton();
-        BBuscar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
         BEliminar = new javax.swing.JButton();
         BActualizar = new javax.swing.JButton();
-        BCrear = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        InvCodetxt = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(197, 164, 133));
 
-        TablaInsumos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -59,8 +59,8 @@ public class InventarioVista extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3"
             }
         ));
-        TablaInsumos.setGridColor(new java.awt.Color(132, 102, 81));
-        jScrollPane1.setViewportView(TablaInsumos);
+        tablaInventario.setGridColor(new java.awt.Color(132, 102, 81));
+        jScrollPane1.setViewportView(tablaInventario);
 
         jLabel1.setText("Nombre del Insumo");
 
@@ -70,15 +70,15 @@ public class InventarioVista extends javax.swing.JFrame {
 
         jLabel3.setText("Ordenar por:");
 
-        BLimpiar.setText("Limpiar");
+        btnLimpiar.setText("Limpiar");
 
-        BBuscar.setText("Buscar");
+        btnListar.setText("Buscar");
 
         BEliminar.setText("Eliminar");
 
         BActualizar.setText("Actualizar");
 
-        BCrear.setText("Crear");
+        btnCrear.setText("Crear");
 
         jLabel4.setText("Código de insumo");
 
@@ -87,28 +87,25 @@ public class InventarioVista extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(InvNombretxt)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                            .addComponent(InvCantxt)
-                            .addComponent(CBOrden, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(InvCodetxt)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(BLimpiar)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtNombre)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                        .addComponent(txtCantidad)
+                        .addComponent(CBOrden, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCodigo)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(BCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BActualizar)
                         .addGap(18, 18, 18)
@@ -129,24 +126,24 @@ public class InventarioVista extends javax.swing.JFrame {
                                 .addGap(244, 244, 244)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(BActualizar)
-                                    .addComponent(BBuscar)
+                                    .addComponent(btnListar)
                                     .addComponent(BEliminar)
-                                    .addComponent(BCrear)))
+                                    .addComponent(btnCrear)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(InvCodetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InvNombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InvCantxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(BLimpiar)
+                                .addComponent(btnLimpiar)
                                 .addGap(17, 17, 17))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -204,21 +201,21 @@ public class InventarioVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BActualizar;
-    private javax.swing.JButton BBuscar;
-    private javax.swing.JButton BCrear;
-    private javax.swing.JButton BEliminar;
-    private javax.swing.JButton BLimpiar;
-    private javax.swing.JComboBox<String> CBOrden;
-    private javax.swing.JTextField InvCantxt;
-    private javax.swing.JTextField InvCodetxt;
-    private javax.swing.JTextField InvNombretxt;
-    private javax.swing.JTable TablaInsumos;
+    public javax.swing.JButton BActualizar;
+    public javax.swing.JButton BEliminar;
+    public javax.swing.JComboBox<String> CBOrden;
+    public javax.swing.JButton btnCrear;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnListar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tablaInventario;
+    public javax.swing.JTextField txtCantidad;
+    public javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
